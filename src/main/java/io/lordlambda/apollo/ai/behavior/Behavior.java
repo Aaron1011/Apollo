@@ -12,6 +12,9 @@ public interface Behavior {
      * The const value for this behavior for calculations
      * @return
      *  The const
+     * </p>
+     * The constant value for each behavior is a number anywhere from 0 to 1.
+     * This constant value is how "vain" the behavior makes the decisions act.
      */
     float getConst();
 

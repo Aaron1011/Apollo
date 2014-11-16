@@ -89,11 +89,11 @@ public class XMLConfiguration extends DefaultHandler {
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 map.put(filePath, db.parse(new File(filePath)));
             }catch(ParserConfigurationException e) {
-                Apollo.getApollo().log(Level.ERROR, String.format("Couldn't parse file: %s", filePath));
+                Apollo.getApollo().log(Level.ERROR, String.format("Couldn't parse file (ParserConfiguration): %s", filePath));
             }catch(IOException e) {
-                Apollo.getApollo().log(Level.ERROR, String.format("Couldn't parse file: %s", filePath));
+                Apollo.getApollo().log(Level.ERROR, String.format("Couldn't parse file (IOException): %s", filePath));
             }catch(SAXException e) {
-                Apollo.getApollo().log(Level.ERROR, String.format("Couldn't parse file: %s", filePath));
+                Apollo.getApollo().log(Level.ERROR, String.format("Couldn't parse file (SAXException): %s", filePath));
             }
             return;
         }

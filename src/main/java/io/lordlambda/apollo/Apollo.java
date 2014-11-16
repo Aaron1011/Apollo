@@ -2,6 +2,7 @@ package io.lordlambda.apollo;
 
 import io.lordlambda.apollo.io.RFileManager;
 import io.lordlambda.apollo.io.XMLConfiguration;
+import io.lordlambda.apollo.listeners.SpawnListener;
 import io.lordlambda.apollo.world.RegionManager;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -74,7 +75,8 @@ public class Apollo {
      * The goal here is to:
      *  1. Grab sponge instances.
      *  2. Create instances of managers so people can statically get them later.
-     *  3. Check sponge support version.
+     *  3. Register Listeners
+     *  4. Check sponge support version.
      */
     @Subscribe
     public void preInit(PreInitializationEvent event) {
@@ -99,6 +101,14 @@ public class Apollo {
             useR = false;
         }
         new RegionManager();
+
+
+        /////////////////////////////////////////////////////////////
+        //
+        // Register Listeners
+        //
+        /////////////////////////////////////////////////////////////
+        g.getEventManager().register(new SpawnListener());
 
         /////////////////////////////////////////////////////////////
         //
