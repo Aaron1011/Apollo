@@ -1,5 +1,6 @@
 package io.lordlambda.apollo;
 
+import io.lordlambda.apollo.ai.PredicitionManager;
 import io.lordlambda.apollo.io.RFileManager;
 import io.lordlambda.apollo.io.XMLConfiguration;
 import io.lordlambda.apollo.listeners.SpawnListener;
@@ -101,6 +102,7 @@ public class Apollo {
             useR = false;
         }
         new RegionManager();
+        new PredicitionManager();
 
 
         /////////////////////////////////////////////////////////////

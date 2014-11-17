@@ -1,6 +1,5 @@
 package io.lordlambda.apollo.math;
 
-import io.lordlambda.apollo.Apollo;
 import io.lordlambda.apollo.world.types.threeD.CuboidRegion;
 import io.lordlambda.apollo.world.Region;
 import io.lordlambda.apollo.world.types.threeD.SphericalRegion;
@@ -8,7 +7,6 @@ import io.lordlambda.apollo.world.types.twoD.SquareRegion;
 import org.spongepowered.api.math.Vector2f;
 import org.spongepowered.api.math.Vector3f;
 import org.spongepowered.api.math.Vectors;
-import org.spongepowered.api.world.World;
 
 import java.util.List;
 
@@ -74,8 +72,8 @@ public class VectorMath {
             float minX = sr.getXY().getX();
             float minY = sr.getXY().getY();
 
-            float maxX = Integer.parseInt((String) sr.getTagData("WIDTH").toArray()[0]);
-            float maxY = Integer.parseInt((String) sr.getTagData("HEIGHT").toArray()[0]);
+            float maxX = minX + Integer.parseInt((String) sr.getTagData("WIDTH").toArray()[0]);
+            float maxY = minY + Integer.parseInt((String) sr.getTagData("HEIGHT").toArray()[0]);
 
             float queryX = point.getX();
             float queryY = point.getY();
