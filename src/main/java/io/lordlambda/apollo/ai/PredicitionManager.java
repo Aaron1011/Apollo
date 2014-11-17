@@ -1,5 +1,9 @@
 package io.lordlambda.apollo.ai;
 
+import io.lordlambda.apollo.ai.action.Action;
+
+import java.util.LinkedHashMap;
+
 /**
  * Creator: LordLambda
  * Date: 11/16/14.
@@ -7,13 +11,16 @@ package io.lordlambda.apollo.ai;
  * Usage: Manages Predicitions
  */
 public class PredicitionManager {
-
+    //TODO: This
     static PredicitionManager pm;
+    LinkedHashMap<AI, Action> predicitions;
 
 
     public PredicitionManager() {
         pm = this;
+        predicitions = new LinkedHashMap<>();
     }
 
     public static PredicitionManager getSelf() {return pm;}
+
 }
