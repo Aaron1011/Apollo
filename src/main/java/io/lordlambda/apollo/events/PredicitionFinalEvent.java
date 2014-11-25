@@ -3,6 +3,8 @@ package io.lordlambda.apollo.events;
 import org.spongepowered.api.event.Event;
 import org.spongepowered.api.event.Result;
 
+import java.util.UUID;
+
 /**
  * Creator: LordLambda
  * Date: 11/17/14.
@@ -12,9 +14,11 @@ import org.spongepowered.api.event.Result;
 public class PredicitionFinalEvent implements Event {
 
     long[] predicted;
+    UUID entityTargeting;
 
-    public PredicitionFinalEvent(long[] result) {
+    public PredicitionFinalEvent(long[] result, UUID id) {
         predicted = result;
+        entityTargeting = id;
     }
 
     @Override
@@ -37,4 +41,6 @@ public class PredicitionFinalEvent implements Event {
     public long[] getPredicition() {
         return predicted;
     }
+
+    public UUID getEntityTargeting() {return entityTargeting;}
 }

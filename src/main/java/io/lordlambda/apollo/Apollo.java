@@ -1,5 +1,6 @@
 package io.lordlambda.apollo;
 
+import io.lordlambda.apollo.ai.AIManager;
 import io.lordlambda.apollo.ai.PredicitionManager;
 import io.lordlambda.apollo.io.RFileManager;
 import io.lordlambda.apollo.io.XMLConfiguration;
@@ -103,6 +104,7 @@ public class Apollo {
         }
         new RegionManager();
         new PredicitionManager();
+        new AIManager();
 
 
         /////////////////////////////////////////////////////////////

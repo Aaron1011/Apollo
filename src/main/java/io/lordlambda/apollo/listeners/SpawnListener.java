@@ -1,11 +1,16 @@
 package io.lordlambda.apollo.listeners;
 
+import io.lordlambda.apollo.Apollo;
+import io.lordlambda.apollo.ai.AI;
+import io.lordlambda.apollo.ai.AIManager;
 import io.lordlambda.apollo.io.XMLConfiguration;
 import io.lordlambda.apollo.math.VectorMath;
 import io.lordlambda.apollo.world.*;
 import io.lordlambda.apollo.world.types.Region2D;
 import io.lordlambda.apollo.world.types.Region3D;
+import org.apache.log4j.Level;
 import org.spongepowered.api.entity.Entity;
+import org.spongepowered.api.entity.LivingEntity;
 import org.spongepowered.api.event.Subscribe;
 import org.spongepowered.api.event.entity.EntitySpawnEvent;
 import org.spongepowered.api.math.Vector3d;
@@ -50,6 +55,7 @@ public class SpawnListener {
         if(one) {
             if (two) {
                 List<Region> spawnRegions = RegionManager.getSelf().getSpawnRegions();
+                AIManager am = AIManager.getSelf();
                 for(Entity e : event.getEntities()) {
                     if(!(spawnRegions.size() == 0)) {
                         for (Region r : spawnRegions) {
@@ -62,7 +68,21 @@ public class SpawnListener {
                                     e.remove();
                                 }
                                 else {
-                                    break;
+                                    if(am.aiExists(e.getClass().getSimpleName())) {
+                                        Class clazz = am.getAIClass(e.getClass().getSimpleName());
+                                        AI ai;
+                                        try {
+                                            ai = (AI) clazz.getConstructor(LivingEntity.class).newInstance(e);
+                                        }catch(Exception e1) {
+                                            Apollo.getApollo().log(Level.ERROR, String.format("Creating new AI instance Error: %s", e1.getLocalizedMessage()));
+                                            break;
+                                        }
+                                        e.remove();
+                                        ai.spawnAI();
+                                        break;
+                                    }else {
+                                        break;
+                                    }
                                 }
                             }
                             else if (r instanceof Region2D) {
@@ -78,7 +98,21 @@ public class SpawnListener {
                             }
                         }
                     }else {
-                        e.remove();
+                        if(am.aiExists(e.getClass().getSimpleName())) {
+                            Class clazz = am.getAIClass(e.getClass().getSimpleName());
+                            AI ai;
+                            try {
+                                ai = (AI) clazz.getConstructor(LivingEntity.class).newInstance(e);
+                            }catch(Exception e1) {
+                                Apollo.getApollo().log(Level.ERROR, String.format("Creating new AI instance Error: %s", e1.getLocalizedMessage()));
+                                break;
+                            }
+                            e.remove();
+                            ai.spawnAI();
+                            break;
+                        }else {
+                            break;
+                        }
                     }
                 }
             }

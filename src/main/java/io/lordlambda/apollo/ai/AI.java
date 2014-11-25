@@ -39,8 +39,14 @@ public abstract class AI {
         }
     }
 
+    private void defaultCalculation(PredicitionFinalEvent event) {
+
+    }
+
     @Subscribe
-    public void reAssesGoals(PredicitionFinalEvent event) {
+    public abstract void reAssesGoals(PredicitionFinalEvent event);
+
+    public void spawnAI() {
 
     }
 }
