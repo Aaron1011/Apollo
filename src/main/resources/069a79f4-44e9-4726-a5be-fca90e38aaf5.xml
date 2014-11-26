@@ -1,7 +1,0 @@
-<!-- Example  Of Notch's Data, saved as UUID.xml -->
-<!-- 6 sets of data -->
-<data>
-    <onRun>1,1,1;2,2,2;2,2,2;2,2,2;3,3,3;4,4,4</onRun>
-    <onStand>1,1;1,1,1;1,0,0;0,0,0;0,1,2;4,4,4</onStand>
-    <health>10;2;8;20;5;16</health>
-</data>

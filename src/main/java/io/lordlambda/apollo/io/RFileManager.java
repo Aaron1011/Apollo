@@ -6,6 +6,7 @@ import rcaller.RCaller;
 import rcaller.RCode;
 import rcaller.ROutputParser;
 
+import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class RFileManager {
      * @return
      *  A non-static version of self.
      */
+    @Nullable
     public static RFileManager getSelf() {return rfm;}
 
     /**
@@ -76,6 +78,7 @@ public class RFileManager {
      * Note no checks are done for the data being actually supported RScript code. There is a certain trust relationship
      * here.
      */
+    @Nullable
     public RCode parseFile(String filename) {
         List<String> lines = new ArrayList<String>();
         try {

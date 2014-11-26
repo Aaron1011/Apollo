@@ -26,6 +26,6 @@ public class Predict extends Thread {
     @Override
     public void run() {
 
-        Apollo.getApollo().getGame().getEventManager().call(new PredicitionFinalEvent(new long[]{}, toPredictFor));
+        Apollo.getApollo().getGame().getEventManager().post(new PredicitionFinalEvent(new long[]{}, toPredictFor));
     }
 }

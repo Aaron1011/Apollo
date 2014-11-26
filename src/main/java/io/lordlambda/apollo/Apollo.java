@@ -13,6 +13,8 @@ import org.spongepowered.api.event.Subscribe;
 import org.spongepowered.api.event.state.PreInitializationEvent;
 import org.spongepowered.api.plugin.Plugin;
 
+import javax.annotation.Nullable;
+
 /**
  * Creator: LordLambda
  * Date: 11/12/14.
@@ -129,6 +131,7 @@ public class Apollo {
      * @return
      *  The static instance of apollo
      */
+    @Nullable
     public static Apollo getApollo() {return apollo;}
 
     /**
@@ -156,6 +159,7 @@ public class Apollo {
      * @return
      *  The game instance;
      */
+    @Nullable
     public Game getGame() {return g;}
 
     /**

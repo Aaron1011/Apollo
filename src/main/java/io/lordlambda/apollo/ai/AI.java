@@ -46,7 +46,5 @@ public abstract class AI {
     @Subscribe
     public abstract void reAssesGoals(PredicitionFinalEvent event);
 
-    public void spawnAI() {
-
-    }
+    public abstract void spawnAI();
 }

@@ -1,7 +1,7 @@
 package io.lordlambda.apollo.events;
 
-import org.spongepowered.api.event.Event;
-import org.spongepowered.api.event.Result;
+import org.spongepowered.api.util.event.Event;
+import org.spongepowered.api.util.event.Result;
 
 import java.util.UUID;
 

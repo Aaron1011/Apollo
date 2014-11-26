@@ -2,6 +2,8 @@ package io.lordlambda.apollo;
 
 import io.lordlambda.apollo.io.XMLConfiguration;
 
+import javax.annotation.Nullable;
+
 /**
  * Creator: LordLambda
  * Date: 11/12/14.
@@ -27,6 +29,7 @@ public class VersionHandler {
      * @return
      *  The current Apollo version
      */
+    @Nullable
     public static String getApolloVersion() {
         return XMLConfiguration.getSelf().parseValue("configuration.xml", "configuration", "apolloVersion");
     }

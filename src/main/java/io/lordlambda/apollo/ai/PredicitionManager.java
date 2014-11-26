@@ -2,6 +2,7 @@ package io.lordlambda.apollo.ai;
 
 import io.lordlambda.apollo.ai.action.Action;
 
+import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
 
 /**
@@ -21,6 +22,7 @@ public class PredicitionManager {
         predicitions = new LinkedHashMap<>();
     }
 
+    @Nullable
     public static PredicitionManager getSelf() {return pm;}
 
 }

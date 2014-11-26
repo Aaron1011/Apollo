@@ -14,6 +14,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import javax.annotation.Nullable;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,7 +47,7 @@ public class XMLConfiguration extends DefaultHandler {
      */
     public XMLConfiguration() {
         xc = this;
-        map = new LinkedHashMap<String, Document>();
+        map = new LinkedHashMap<>();
         dbf = DocumentBuilderFactory.newInstance();
     }
 
@@ -57,7 +58,7 @@ public class XMLConfiguration extends DefaultHandler {
      */
     public XMLConfiguration(String filename) {
         xc = this;
-        map = new LinkedHashMap<String, Document>();
+        map = new LinkedHashMap<>();
         dbf = DocumentBuilderFactory.newInstance();
         addFile(filename);
     }
@@ -69,7 +70,7 @@ public class XMLConfiguration extends DefaultHandler {
      */
     public XMLConfiguration(List<String> filenames) {
         xc = this;
-        map = new LinkedHashMap<String, Document>();
+        map = new LinkedHashMap<>();
         dbf = DocumentBuilderFactory.newInstance();
         for(String s : filenames) {
             addFile(s);
@@ -111,6 +112,7 @@ public class XMLConfiguration extends DefaultHandler {
      * @return
      *  The specified node in the specified element.
      */
+    @Nullable
     public String parseValue(String fileName, String element, String node) {
         Document dom = get(fileName);
         Element docElm = dom.getDocumentElement();
@@ -155,6 +157,7 @@ public class XMLConfiguration extends DefaultHandler {
      * @return
      *  The document instance of the file to get.
      */
+    @Nullable
     public Document get(String filename) {
         return map.get(filename);
     }
@@ -173,5 +176,6 @@ public class XMLConfiguration extends DefaultHandler {
      * @return
      *  The non-static version of this manager.
      */
+    @Nullable
     public static XMLConfiguration getSelf() {return xc;}
 }

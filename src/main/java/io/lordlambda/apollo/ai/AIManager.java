@@ -1,5 +1,6 @@
 package io.lordlambda.apollo.ai;
 
+import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
 
 /**
@@ -35,6 +36,7 @@ public class AIManager {
      * @return
      *  The class for specified entity.
      */
+    @Nullable
     public Class getAIClass(String entityName) {
         if(entityAIMap.containsKey(entityName)) {
             return entityAIMap.get(entityName);
@@ -76,5 +78,6 @@ public class AIManager {
      * @return
      *  The static instance of AIManager
      */
+    @Nullable
     public static AIManager getSelf() {return am;}
 }

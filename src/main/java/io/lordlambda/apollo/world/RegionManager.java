@@ -1,5 +1,6 @@
 package io.lordlambda.apollo.world;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,5 +106,6 @@ public class RegionManager {
      * @return
      *  The current copy of region manager.
      */
+    @Nullable
     public static RegionManager getSelf() {return rm;}
 }
