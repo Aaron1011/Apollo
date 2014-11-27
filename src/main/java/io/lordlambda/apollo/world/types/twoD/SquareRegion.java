@@ -33,7 +33,7 @@ public class SquareRegion implements Region2D {
      */
     public SquareRegion() {
         id = UUID.randomUUID();
-        tags = new LinkedHashMap<String, List<String>>();
+        tags = new LinkedHashMap<>();
     }
 
     @Override

@@ -14,11 +14,12 @@ import java.util.UUID;
 public class PredicitionFinalEvent implements Event {
 
     long[] predicted;
-    UUID entityTargeting;
+    UUID entityTargeting, entitySelf;
 
-    public PredicitionFinalEvent(long[] result, UUID id) {
+    public PredicitionFinalEvent(long[] result, UUID id, UUID self) {
         predicted = result;
         entityTargeting = id;
+        entitySelf = self;
     }
 
     @Override
@@ -43,4 +44,8 @@ public class PredicitionFinalEvent implements Event {
     }
 
     public UUID getEntityTargeting() {return entityTargeting;}
+
+    public UUID getSelf() {
+        return entitySelf;
+    }
 }

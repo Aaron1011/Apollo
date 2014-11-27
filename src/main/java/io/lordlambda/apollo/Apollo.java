@@ -9,9 +9,9 @@ import io.lordlambda.apollo.world.RegionManager;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.spongepowered.api.Game;
-import org.spongepowered.api.event.Subscribe;
 import org.spongepowered.api.event.state.PreInitializationEvent;
 import org.spongepowered.api.plugin.Plugin;
+import org.spongepowered.api.util.event.Subscribe;
 
 import javax.annotation.Nullable;
 
@@ -114,7 +114,9 @@ public class Apollo {
         // Register Listeners
         //
         /////////////////////////////////////////////////////////////
-        g.getEventManager().register(new SpawnListener());
+
+        //Just pass null as owner until an implementation for owner gets explained
+        g.getEventManager().register(null, new SpawnListener());
 
         /////////////////////////////////////////////////////////////
         //

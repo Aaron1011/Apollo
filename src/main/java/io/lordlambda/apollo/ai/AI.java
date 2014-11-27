@@ -4,7 +4,7 @@ import io.lordlambda.apollo.ai.action.Action;
 import io.lordlambda.apollo.ai.behavior.Behavior;
 import io.lordlambda.apollo.events.PredicitionFinalEvent;
 import org.spongepowered.api.entity.LivingEntity;
-import org.spongepowered.api.event.Subscribe;
+import org.spongepowered.api.util.event.Subscribe;
 
 import java.util.PriorityQueue;
 import java.util.UUID;
@@ -43,8 +43,14 @@ public abstract class AI {
 
     }
 
-    @Subscribe
     public abstract void reAssesGoals(PredicitionFinalEvent event);
+
+    @Subscribe
+    public void eventHandler(PredicitionFinalEvent event) {
+        if(event.getSelf() == id) {
+            reAssesGoals(event);
+        }
+    }
 
     public abstract void spawnAI();
 }

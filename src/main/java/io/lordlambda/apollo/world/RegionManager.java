@@ -28,7 +28,7 @@ public class RegionManager {
      */
     public RegionManager() {
         rm = this;
-        registeredRegions = new ArrayList<Region>();
+        registeredRegions = new ArrayList<>();
     }
 
     /**
