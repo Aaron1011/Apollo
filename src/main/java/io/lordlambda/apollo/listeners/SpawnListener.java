@@ -10,7 +10,7 @@ import io.lordlambda.apollo.world.types.Region2D;
 import io.lordlambda.apollo.world.types.Region3D;
 import org.apache.log4j.Level;
 import org.spongepowered.api.entity.Entity;
-import org.spongepowered.api.entity.LivingEntity;
+import org.spongepowered.api.entity.living.Living;
 import org.spongepowered.api.event.entity.EntitySpawnEvent;
 import org.spongepowered.api.math.Vector3d;
 import org.spongepowered.api.math.Vector3f;
@@ -56,7 +56,7 @@ public class SpawnListener {
             if (two) {
                 List<Region> spawnRegions = RegionManager.getSelf().getSpawnRegions();
                 AIManager am = AIManager.getSelf();
-                for(Entity e : event.getEntities()) {
+                Entity e = event.getEntity();
                     if(!(spawnRegions.size() == 0)) {
                         for (Region r : spawnRegions) {
                             if (r instanceof Region3D) {
@@ -72,7 +72,7 @@ public class SpawnListener {
                                         Class clazz = am.getAIClass(e.getClass().getSimpleName());
                                         AI ai;
                                         try {
-                                            ai = (AI) clazz.getConstructor(LivingEntity.class).newInstance(e);
+                                            ai = (AI) clazz.getConstructor(Living.class).newInstance(e);
                                         }catch(Exception e1) {
                                             Apollo.getApollo().log(Level.ERROR, String.format("Creating new AI instance Error: %s", e1.getLocalizedMessage()));
                                             break;
@@ -89,7 +89,7 @@ public class SpawnListener {
                                 Region2D dd = (Region2D) r;
                                 Vector3d toConvert = e.getPosition();
                                 Vector3f converted = Vectors.create3f((float) toConvert.getX(), (float) toConvert.getY(), (float) toConvert.getZ());
-                                if (!(dd.pointInRegion(VectorMath.vector3ToVector2(converted)))) {
+                                if (!(dd.pointInRegion(VectorMath.vector3ToVector2(converted, e.getWorld())))) {
                                     e.remove();
                                 }
                                 else {
@@ -102,19 +102,18 @@ public class SpawnListener {
                             Class clazz = am.getAIClass(e.getClass().getSimpleName());
                             AI ai;
                             try {
-                                ai = (AI) clazz.getConstructor(LivingEntity.class).newInstance(e);
+                                ai = (AI) clazz.getConstructor(Living.class).newInstance(e);
                             }catch(Exception e1) {
                                 Apollo.getApollo().log(Level.ERROR, String.format("Creating new AI instance Error: %s", e1.getLocalizedMessage()));
-                                break;
+                                return;
                             }
                             e.remove();
                             ai.spawnAI();
-                            break;
+                            return;
                         }else {
-                            break;
+                            return;
                         }
                     }
-                }
             }
         }else {
             one = true;

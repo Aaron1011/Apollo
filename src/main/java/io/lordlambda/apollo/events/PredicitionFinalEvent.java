@@ -1,7 +1,7 @@
 package io.lordlambda.apollo.events;
 
 import org.spongepowered.api.util.event.Event;
-import org.spongepowered.api.util.event.Result;
+import org.spongepowered.api.util.event.callback.CallbackList;
 
 import java.util.UUID;
 
@@ -22,21 +22,8 @@ public class PredicitionFinalEvent implements Event {
         entitySelf = self;
     }
 
-    @Override
-    public boolean isCancellable() {
-        return false;
-    }
-
-    @Override
-    public Result getResult() {
-        return Result.DEFAULT;
-    }
-
-    @Override
-    public void setResult(Result result) {
-        /**
-         * This event can't have a result set, it only returns a result.
-         */
+    public CallbackList getCallbacks() {
+        return null; //Fix Later
     }
 
     public long[] getPredicition() {

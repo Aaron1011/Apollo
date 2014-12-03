@@ -3,7 +3,7 @@ package io.lordlambda.apollo.ai;
 import io.lordlambda.apollo.ai.action.Action;
 import io.lordlambda.apollo.ai.behavior.Behavior;
 import io.lordlambda.apollo.events.PredicitionFinalEvent;
-import org.spongepowered.api.entity.LivingEntity;
+import org.spongepowered.api.entity.living.Living;
 import org.spongepowered.api.util.event.Subscribe;
 
 import java.util.PriorityQueue;
@@ -19,10 +19,10 @@ public abstract class AI {
     //TODO: This.
     Behavior currentBehavior;
     UUID id;
-    LivingEntity entity;
+    Living entity;
     PriorityQueue<Action> actionQueue;
 
-    public AI(LivingEntity entity) {
+    public AI(Living entity) {
         currentBehavior = null;
         id = UUID.randomUUID();
         this.entity = entity;

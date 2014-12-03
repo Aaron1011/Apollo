@@ -1,7 +1,7 @@
 package io.lordlambda.apollo.world.types.threeD;
 
 import io.lordlambda.apollo.world.types.Region3D;
-import org.spongepowered.api.entity.LivingEntity;
+import org.spongepowered.api.entity.living.Living;
 import org.spongepowered.api.math.Vector3f;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class CuboidRegion implements Region3D {
     }
 
     @Override
-    public List<LivingEntity> entitiesAllowed() {
+    public List<Living> entitiesAllowed() {
         return null;
     }
 
@@ -85,7 +85,7 @@ public class CuboidRegion implements Region3D {
     }
 
     @Override
-    public boolean livingEntityAllowed(LivingEntity entity) {
+    public boolean livingEntityAllowed(Living entity) {
         return false;
     }
 

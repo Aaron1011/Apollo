@@ -1,6 +1,6 @@
 package io.lordlambda.apollo.world;
 
-import org.spongepowered.api.entity.LivingEntity;
+import org.spongepowered.api.entity.living.Living;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,7 +27,7 @@ public interface Region {
      * </p>
      * If this list contains null it is supposed to be assumed nothing is allowed.
      */
-    List<LivingEntity> entitiesAllowed();
+    List<Living> entitiesAllowed();
 
     /**
      * Returns if a living entity is allowed.
@@ -36,7 +36,7 @@ public interface Region {
      * @return
      *  If the entity is supported.
      */
-    boolean livingEntityAllowed(LivingEntity entity);
+    boolean livingEntityAllowed(Living entity);
 
     /**
      * Get a list of all the tag names. All Tags this region has.

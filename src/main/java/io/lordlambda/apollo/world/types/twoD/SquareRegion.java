@@ -1,7 +1,7 @@
 package io.lordlambda.apollo.world.types.twoD;
 
 import io.lordlambda.apollo.world.types.Region2D;
-import org.spongepowered.api.entity.LivingEntity;
+import org.spongepowered.api.entity.living.Living;
 import org.spongepowered.api.math.Vector2f;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class SquareRegion implements Region2D {
     }
 
     @Override
-    public List<LivingEntity> entitiesAllowed() {
+    public List<Living> entitiesAllowed() {
         return null;
     }
 
@@ -86,7 +86,7 @@ public class SquareRegion implements Region2D {
     }
 
     @Override
-    public boolean livingEntityAllowed(LivingEntity entity) {
+    public boolean livingEntityAllowed(Living entity) {
         return false;
     }
 

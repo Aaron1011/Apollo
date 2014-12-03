@@ -97,29 +97,28 @@ public class DataSet {
      */
     public RCode getDataAsDataFrame(String nameOfFrame) {
         RCode rc = new RCode();
-        List<String> names = new ArrayList<>();
+        String toAdd;
+        String toAdd2 = "";
+        boolean once = false;
         for(String s : map.keySet()) {
-            names.add(s);
-            String toAdd = String.format("%s <- (", s);
+            if(once) {
+                toAdd2 += String.format(", %s", s);
+            }else {
+                once = true;
+                toAdd2 = String.format("%s <- data.frame(%s", nameOfFrame, s);
+            }
+            toAdd = String.format("%s <- (", s);
             int argc = map.get(s).size();
             for(int i = 0; i < argc; i++) {
-                if(i == 0)
+                if(i == 0) {
                     toAdd += String.format("%09.4f", (BigDecimal) map.get(s).toArray()[i]);
-                else
+                }else {
                     toAdd += String.format(", %09.4f", (BigDecimal) map.get(s).toArray()[i]);
+                }
             }
             rc.addRCode(String.format("%s)", toAdd));
+            rc.addRCode(String.format("%s, stringsAsFactors=FALSE)", toAdd2));
         }
-        String toAdd = "";
-        for(int i = 0; i < names.size(); ++i) {
-            if(i == 0) {
-                toAdd += (String.format("%s <- data.frame(%s", nameOfFrame, names.get(i)));
-            }else {
-                toAdd += (String.format(", %s", names.get(i)));
-            }
-        }
-        toAdd += ", stringsAsFactors=FALSE)";
-        rc.addRCode(toAdd);
         return rc;
     }
 

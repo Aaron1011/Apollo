@@ -3,7 +3,7 @@ package io.lordlambda.apollo.world.types.threeD;
 import io.lordlambda.apollo.Apollo;
 import io.lordlambda.apollo.world.types.Region3D;
 import org.apache.log4j.Level;
-import org.spongepowered.api.entity.LivingEntity;
+import org.spongepowered.api.entity.living.Living;
 import org.spongepowered.api.math.Vector3f;
 
 import java.util.ArrayList;
@@ -33,20 +33,20 @@ public class SphericalRegion implements Region3D {
     /////////////////////////////////////////////////////////////
     private UUID id;
     Vector3f[] XYZ;
-    List<LivingEntity> entitiesAllowed;
+    List<Living> entitiesAllowed;
     private LinkedHashMap<String, List<String>> tags;
 
     public SphericalRegion() {
         id = UUID.randomUUID();
         XYZ = new Vector3f[2];
-        entitiesAllowed = new ArrayList<LivingEntity>();
+        entitiesAllowed = new ArrayList<Living>();
         tags = new LinkedHashMap<String, List<String>>();
     }
 
     public SphericalRegion(String id) {
         this.id = UUID.fromString(id);
         XYZ =  new Vector3f[2];
-        entitiesAllowed = new ArrayList<LivingEntity>();
+        entitiesAllowed = new ArrayList<Living>();
         tags = new LinkedHashMap<String, List<String>>();
     }
 
@@ -58,7 +58,7 @@ public class SphericalRegion implements Region3D {
         }else {
             XYZ = xyz;
         }
-        entitiesAllowed = new ArrayList<LivingEntity>();
+        entitiesAllowed = new ArrayList<Living>();
         tags = new LinkedHashMap<String, List<String>>();
     }
 
@@ -70,11 +70,11 @@ public class SphericalRegion implements Region3D {
         }else {
             XYZ = xyz;
         }
-        entitiesAllowed = new ArrayList<LivingEntity>();
+        entitiesAllowed = new ArrayList<Living>();
         tags = new LinkedHashMap<String, List<String>>();
     }
 
-    public SphericalRegion(List<LivingEntity> entity) {
+    public SphericalRegion(List<Living> entity) {
         this.id = UUID.randomUUID();
         XYZ = new Vector3f[2];
         entitiesAllowed = entity;
@@ -87,7 +87,7 @@ public class SphericalRegion implements Region3D {
     }
 
     @Override
-    public List<LivingEntity> entitiesAllowed() {
+    public List<Living> entitiesAllowed() {
         return null;
     }
 
@@ -133,7 +133,7 @@ public class SphericalRegion implements Region3D {
     }
 
     @Override
-    public boolean livingEntityAllowed(LivingEntity entity) {
+    public boolean livingEntityAllowed(Living entity) {
         return false;
     }
 

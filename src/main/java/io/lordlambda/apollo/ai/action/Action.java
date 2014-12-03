@@ -1,6 +1,6 @@
 package io.lordlambda.apollo.ai.action;
 
-import org.spongepowered.api.entity.LivingEntity;
+import org.spongepowered.api.entity.living.Living;
 
 import java.util.UUID;
 
@@ -15,7 +15,7 @@ public interface Action {
     /**
      * Perform this action.
      */
-    void doAction(LivingEntity e);
+    void doAction(Living e);
 
     /**
      * @return
