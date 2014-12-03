@@ -2,6 +2,7 @@ package io.lordlambda.apollo;
 
 import io.lordlambda.apollo.ai.AIManager;
 import io.lordlambda.apollo.ai.PredicitionManager;
+import io.lordlambda.apollo.ai.action.ActionManager;
 import io.lordlambda.apollo.io.RFileManager;
 import io.lordlambda.apollo.io.XMLConfiguration;
 import io.lordlambda.apollo.listeners.SpawnListener;
@@ -107,6 +108,7 @@ public class Apollo {
         }
         new RegionManager();
         new PredicitionManager();
+        new ActionManager();
         new AIManager();
 
 
@@ -116,8 +118,7 @@ public class Apollo {
         //
         /////////////////////////////////////////////////////////////
 
-        //Just pass null as owner until an implementation for owner gets explained
-        g.getEventManager().register(null, new SpawnListener());
+        g.getEventManager().register(this, new SpawnListener());
 
         /////////////////////////////////////////////////////////////
         //

@@ -1,5 +1,6 @@
 package io.lordlambda.apollo.ai;
 
+import io.lordlambda.apollo.Apollo;
 import io.lordlambda.apollo.ai.action.Action;
 import io.lordlambda.apollo.ai.behavior.Behavior;
 import io.lordlambda.apollo.events.PredicitionFinalEvent;
@@ -27,6 +28,7 @@ public abstract class AI {
         id = UUID.randomUUID();
         this.entity = entity;
         actionQueue = new PriorityQueue<>();
+        Apollo.getApollo().getGame().getEventManager().register(Apollo.getApollo(), this);
     }
 
     public abstract void calcNextMove();

@@ -13,6 +13,14 @@ import java.util.UUID;
  */
 public class PredicitionFinalEvent implements Event {
 
+    /////////////////////////////////////////////////////////////
+    //  Variables
+    //      Class Variables
+    //        predicted - A Long array of predicted movements
+    //        entityTargeting - The UUID of who to predict
+    //        entitySelf - The UUID of the entity i am
+    //
+    /////////////////////////////////////////////////////////////
     long[] predicted;
     UUID entityTargeting, entitySelf;
 

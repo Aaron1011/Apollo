@@ -3,4 +3,5 @@
     <mobDifficulty>HIGHEST</mobDifficulty>
     <forceSpawnRegions>TRUE</forceSpawnRegions>
     <useR>TRUE</useR>
+    <randomTestIter>10000</randomTestIter>
 </configuration>
