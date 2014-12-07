@@ -1,6 +1,7 @@
 package io.lordlambda.apollo.ai.action.actions;
 
 import io.lordlambda.apollo.ai.action.Action;
+import io.lordlambda.apollo.ai.action.ActionManager;
 import org.spongepowered.api.entity.living.Living;
 
 import java.util.UUID;
@@ -13,6 +14,15 @@ import java.util.UUID;
  */
 public class StandingAction implements Action {
 
+    UUID self;
+    ActionManager am;
+
+    public StandingAction() {
+        am = ActionManager.getSelf();
+        am.register(this, am.genUUID(this));
+        self = am.get(this);
+    }
+
     @Override
     public void doAction(Living e) {
         
@@ -22,5 +32,5 @@ public class StandingAction implements Action {
     public String actionName() {return "Stand";}
 
     @Override
-    public UUID getActionID() {return UUID.randomUUID();}
+    public UUID getActionID() {return self;}
 }

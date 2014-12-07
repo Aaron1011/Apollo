@@ -3,6 +3,7 @@ package io.lordlambda.apollo;
 import io.lordlambda.apollo.ai.AIManager;
 import io.lordlambda.apollo.ai.PredicitionManager;
 import io.lordlambda.apollo.ai.action.ActionManager;
+import io.lordlambda.apollo.entropy.EntropyGenerator;
 import io.lordlambda.apollo.io.RFileManager;
 import io.lordlambda.apollo.io.XMLConfiguration;
 import io.lordlambda.apollo.listeners.SpawnListener;
@@ -88,28 +89,53 @@ public class Apollo {
     public void preInit(PreInitializationEvent event) {
         /////////////////////////////////////////////////////////////
         //
+        // Check sponge version.
+        //
+        /////////////////////////////////////////////////////////////
+        if(!(VersionHandler.versionSupported(g.getAPIVersion()))) {
+            event.getPluginLog().error("Sponge version not supported!");
+            System.exit(-1);
+        }
+        event.getPluginLog().info("[Apollo] Starting Up....");
+        /////////////////////////////////////////////////////////////
+        //
         // Hook sponge necessities.
         //
         /////////////////////////////////////////////////////////////
         logger = (Logger) event.getPluginLog(); //Intellij wants this cause the sponge logger is in a different package. Same logger though
         g = event.getGame();
 
+        log("Hooked sponged necessities...");
+
+        log("Starting Managers...");
+
         /////////////////////////////////////////////////////////////
         //
         // Initialize Managers.
         //
         /////////////////////////////////////////////////////////////
+        log("Starting XML Manager...");
         new XMLConfiguration("configuration.xml");
+        log("XML Manager started...");
         if(XMLConfiguration.getSelf().parseValue("configuration.xml", "configuration", "useR").equalsIgnoreCase("true")) {
+            log("Using R Language... Starting R Manager...");
             useR = true;
             new RFileManager();
         }else {
+            log("Language R is not being used... Setting up Replacement...");
             useR = false;
         }
+        log("Starting Entropy Generator...");
+        new EntropyGenerator();
+        log("Done... Starting Region Manager...");
         new RegionManager();
+        log("Done... Starting Predicition Manager...");
         new PredicitionManager();
+        log("Done... Starting Action Manager...");
         new ActionManager();
+        log("Done. Finally starting AI Manager...");
         new AIManager();
+        log("Done. Registering Listeners...");
 
 
         /////////////////////////////////////////////////////////////
@@ -118,17 +144,9 @@ public class Apollo {
         //
         /////////////////////////////////////////////////////////////
 
+        log("Registering Spawn Listener...");
         g.getEventManager().register(this, new SpawnListener());
-
-        /////////////////////////////////////////////////////////////
-        //
-        // Check sponge version.
-        //
-        /////////////////////////////////////////////////////////////
-        if(!(VersionHandler.versionSupported(g.getAPIVersion()))) {
-            log(Level.FATAL, "Sponge version not supported!");
-            System.exit(-1);
-        }
+        log("Done. Started.");
     }
 
     /**

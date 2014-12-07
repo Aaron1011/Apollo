@@ -45,7 +45,8 @@ public class ActionManager {
     }
 
     public void register(Action a, UUID uuid) {
-        map.put(a, uuid);
+        if(!map.containsKey(a))
+            map.put(a, uuid);
     }
 
     public boolean isRegistered(Action a) {
@@ -58,5 +59,30 @@ public class ActionManager {
 
     public void unregister(Action a) {
         if(map.containsKey(a))  map.remove(a);
+    }
+
+    @Nullable
+    public Action getReverse(UUID id) {
+        for(int i = 0; i < map.values().size(); ++i) {
+            if((UUID) map.values().toArray()[i] == id) {
+                return (Action) map.keySet().toArray()[i];
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    public UUID get(Action a) {
+        return map.get(a);
+    }
+
+    @Nullable
+    public Action getActionByName(String name) {
+        for(Action a : map.keySet()) {
+            if(a.actionName().equalsIgnoreCase(name)) {
+                return a;
+            }
+        }
+        return null;
     }
 }

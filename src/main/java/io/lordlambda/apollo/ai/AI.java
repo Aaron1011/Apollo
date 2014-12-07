@@ -37,6 +37,7 @@ public abstract class AI {
         if(currentBehavior.isNeutral()) {
 
         }else {
+            float constant = currentBehavior.getConst();
 
         }
     }
